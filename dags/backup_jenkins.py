@@ -12,7 +12,7 @@ from airflow.providers.ssh.operators.ssh import SSHOperator
 
 
 default_args={
-    "owner":"santhosh",
+    "owner":"app_miration",
     "retries":5,
     "retry_delay":timedelta(minutes=3)
 
