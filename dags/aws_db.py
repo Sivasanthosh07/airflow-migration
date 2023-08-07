@@ -19,7 +19,7 @@ default_args={
 
 }
 
-def call_func():
+def CreateDb():
     rds_demo.RdsInstanceScenario.run_crete_db("demo")
 with DAG(
     dag_id="RDS_DB",
@@ -29,19 +29,31 @@ with DAG(
     start_date=datetime(2023,6,20)
 
 )as dag:
-    # task1=PythonOperator(
-    #     task_id="rds_db_Instance_creation",
-    #     python_callable=call_func,
-    # )
-    
+    task0=PostgresOperator(
+        task_id="cloud_sql_create_tables",
+        postgres_conn_id="cloud_sql",
+        sql="sql/microservices_orders.sql",
+        database="microservices"
+    )
+    task1=PostgresOperator(
+        task_id="cloud_sql_data",
+        postgres_conn_id="cloud_sql",
+        sql="sql/microservice_order_data.sql",
+        database="microservices"
+    )
     task2=PythonOperator(
+        task_id="rds_db_Instance_creation",
+        python_callable=CreateDb,
+    )
+    
+    task3=PythonOperator(
         task_id="get_connection",
         python_callable=connection.get_name
     )
-    task3=PythonOperator(
+    task4=PythonOperator(
         task_id="db_creation",
         python_callable=create_db.create_databses
     )
-    
+
     # task1>>task2
-    task2>>task3
+    task0>>task1>>task2>>task3>>task4

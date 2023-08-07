@@ -1,8 +1,10 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 DROP TABLE IF EXISTS users;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE users (
-  id char(36) NOT NULL ,
+  id char(36) NOT NULL DEFAULT uuid_generate_v4 () ,
   full_name varchar(255) NOT NULL,
   address varchar(255) DEFAULT NULL,
   email varchar(255) DEFAULT NULL,
@@ -13,11 +15,12 @@ CREATE TABLE users (
 
 
 
+
 DROP TABLE IF EXISTS orders;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE orders (
-  id char(36) NOT NULL ,
+  id char(36) NOT NULL DEFAULT uuid_generate_v4 () ,
   product_ids json DEFAULT NULL,
   user_id char(36) NOT NULL,
   total_cost float(25) DEFAULT '0.00',
