@@ -8,7 +8,7 @@ from airflow.providers.postgres.operators.postgres import PostgresOperator
 
 
 default_args={
-    "owner":"santhosh",
+    "owner":"app_migrtaion",
     "retries":5,
     "retry_delay":timedelta(minutes=3)
 
@@ -27,13 +27,13 @@ with DAG(
         sql="sql/microservices_orders.sql",
         database="microservices_orders"
     )
-    task2=PostgresOperator(
-        task_id="microservices_orders_data",
-        postgres_conn_id="postgres_localhost",
-        sql="sql/microservice_order_data.sql",
-        database="microservices_orders"
+    # task2=PostgresOperator(
+    #     task_id="microservices_orders_data",
+    #     postgres_conn_id="postgres_localhost",
+    #     sql="sql/microservice_order_data.sql",
+    #     database="microservices_orders"
 
-    )
+    # )
     
     
-    task1 >> task2
+    task1
