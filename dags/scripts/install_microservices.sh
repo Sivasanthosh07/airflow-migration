@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone https://github.com/amitsatpute-gslab/micro-shop-setup.git
+git clone https://github.com/amitsatpute-pyjs/micro-shop-setup.git
 
 cd ./micro-shop-setup
 
