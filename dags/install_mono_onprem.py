@@ -9,7 +9,7 @@ from airflow.operators.bash import BashOperator
 
 
 default_args={
-    "owner":"tejas",
+    "owner":"app_migration",
     "retries":5,
     "retry_delay":timedelta(minutes=3)
 

@@ -1,9 +1,11 @@
 #!/bin/bash
 
-sudo docker run --name mono-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql
-git clone https://github.com/amitsatpute-gslab/monolith-to-microservices.git
-cd monolith-to-microservices
-cd monolith
+# sudo docker run --name mono-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql
+git clone https://github.com/amitsatpute-pyjs/kafka-connect.git ~/app/
+cd ~/app/kafka-connect/
+docker-compose up postgres
+git clone https://github.com/amitsatpute-pyjs/monolith-to-microservices.git ~/app/
+cd ~/app/monolith-to-microservices/monolith
 cp .env.example .env
 sed -i 's/<username>/root/g' .env
 sed -i 's/<password>/password/g' .env
