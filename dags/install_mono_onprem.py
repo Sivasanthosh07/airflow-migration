@@ -25,7 +25,7 @@ with DAG(
     task1=SSHOperator(
      task_id="install_mono",
      ssh_conn_id='on_prem_vm_ssh',
-     bash_command='/scripts/deploy_mono_app.sh',
+     command='/scripts/deploy_mono_app.sh',
      )
     
     task1
