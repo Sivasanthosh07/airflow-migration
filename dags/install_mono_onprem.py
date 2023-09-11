@@ -19,11 +19,12 @@ with DAG(
     default_args=default_args,
     description="Install monolith app with DB on Prem",
     schedule="0 0 * * *",
-    start_date=datetime(2023,6,26)
+    start_date=datetime(2023,9,11)
 
 )as dag:
     task1=SSHOperator(
      task_id="install_mono",
+     ssh_conn_id='ssh',
      bash_command='/scripts/deploy_mono_app.sh',
      )
     
