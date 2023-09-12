@@ -23,7 +23,7 @@ with DAG(
 
 )as dag:
     task1=SSHOperator(
-     task_id="deploy kafka",
+     task_id="deploy_kafka",
      ssh_conn_id='on_prem_vm_ssh',
      command='/scripts/deploykafka.sh',
      )

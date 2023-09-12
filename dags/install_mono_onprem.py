@@ -23,7 +23,7 @@ with DAG(
 
 )as dag:
     task1=SSHOperator(
-     task_id="install_mono",
+     task_id="install_node",
      ssh_conn_id='on_prem_vm_ssh',
      command='/scripts/install_node.sh',
      )
