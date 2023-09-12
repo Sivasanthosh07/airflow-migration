@@ -15,7 +15,7 @@ default_args={
 
 }
 with DAG(
-    dag_id="Install-MonolithApp-onPrem",
+    dag_id="Install-Kafka-Server",
     default_args=default_args,
     description="Install monolith app with DB on Prem",
     schedule="0 0 * * *",
@@ -23,9 +23,9 @@ with DAG(
 
 )as dag:
     task1=SSHOperator(
-     task_id="install_mono",
+     task_id="deploy kafka",
      ssh_conn_id='on_prem_vm_ssh',
-     command='/scripts/install_node.sh && /scripts/deploy_mono_app.sh',
+     command='/scripts/deploykafka.sh',
      )
     
     task1
