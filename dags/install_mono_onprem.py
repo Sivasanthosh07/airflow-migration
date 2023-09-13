@@ -26,6 +26,7 @@ with DAG(
      task_id="install_mono",
      ssh_conn_id='on_prem_vm_ssh',
      command='/scripts/deploy_mono_app.sh',
+     cmd_timeout=96000
      )
     
     task1
