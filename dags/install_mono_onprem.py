@@ -23,15 +23,9 @@ with DAG(
 
 )as dag:
     task1=SSHOperator(
-     task_id="install_node",
-     ssh_conn_id='on_prem_vm_ssh',
-     command='/scripts/install_node.sh',
-     )
-    
-    task2=SSHOperator(
      task_id="install_mono",
      ssh_conn_id='on_prem_vm_ssh',
      command='/scripts/deploy_mono_app.sh',
      )
     
-    task1>>task2
+    task1
