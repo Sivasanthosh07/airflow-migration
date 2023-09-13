@@ -7,10 +7,11 @@ docker-compose up postgres -d
 git clone https://github.com/amitsatpute-pyjs/monolith-to-microservices.git /home/gsluser/app/monolith-to-microservices/
 cd /home/gsluser/app/monolith-to-microservices/monolith
 cp .env.example .env
+export PUBLIC_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 sed -i 's/<username>/root/g' .env
 sed -i 's/<password>/password/g' .env
 npm ci
-sudo npm install pm2 -g
+# sudo npm install pm2 -g
 pm2 --name monoApp start npm -- start
 # npm start
 cd ../react-app
