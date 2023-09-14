@@ -3,7 +3,7 @@
 # sudo docker run --name mono-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql
 git clone https://github.com/amitsatpute-pyjs/kafka-connect.git /home/gsluser/app/kafka-connect/
 cd /home/gsluser/app/kafka-connect/
-docker-compose up postgres -d
+docker-compose up -d postgres
 git clone https://github.com/amitsatpute-pyjs/monolith-to-microservices.git /home/gsluser/app/monolith-to-microservices/
 cd /home/gsluser/app/monolith-to-microservices/monolith
 cp .env.example .env
