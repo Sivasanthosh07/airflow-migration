@@ -12,7 +12,11 @@ from airflow.operators.bash import BashOperator
 
 
 default_args={
+<<<<<<< HEAD
     "owner":"app_migraton",
+=======
+    "owner":"app_migrtaion",
+>>>>>>> 98f4d4f2339caac4b26cf80cd879b70146c35de9
     "retries":5,
     "retry_delay":timedelta(minutes=3)
 
